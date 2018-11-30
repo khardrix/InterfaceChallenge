@@ -47,6 +47,12 @@ public class Players implements ISaveable {
     @Override
     public ArrayList valuesToBeSaved() {
 
+        System.out.println("\n" + this.name + " is the name of the player. " + this.name + " has been saved. " +
+                    "\n" + this.weapon + " is the name of the weapon " + this.name + " is wielding. " + this.weapon +
+                    " has been saved. " +
+                    "\n" + this.currentHealth + " is the amount of hit points " + this.name + " started with. " +
+                    "The value of " + this.currentHealth + " has been saved. \n");
+
         return playerFieldAttributes;
     }
 

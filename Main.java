@@ -49,6 +49,8 @@ public class Main {
     public static void saveValues(ISaveable saveableObject){
 
         ArrayList<String> values = new ArrayList<String>();
+
+        saveableObject.valuesToBeSaved();
     }
 
 
