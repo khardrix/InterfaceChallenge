@@ -1,7 +1,5 @@
 package InterfacesChallenge;
 
-// LEFT OFF Section 9, Part 102 AT 03:12 (03:12 - 18:11)
-
 
 // IMPORTS of needed tools and plug-ins
 import java.util.ArrayList;
@@ -43,9 +41,28 @@ public class Main {
         System.out.println(player1.getName());
         saveValues(player1);
         saveValues(monster1);
+
+
+
+        // INSTRUCTOR TEST CASES:
+        PlayerInstructor tim = new PlayerInstructor("Tim", 10, 15);
+        System.out.println(tim.toString()); // SAME AS: System.out.println(tim);
+        saveObject(tim);
+
+        tim.setHitPoints(8);
+        System.out.println(tim);            // SAME AS: System.out.println(tim.toString());
+        tim.setWeapon("Stormbringer");
+        saveObject(tim);
+        loadObject(tim);
+        System.out.println(tim);
+
+        ISaveableInstructor werewolf = new MonsterInstructor("Werewolf", 20, 40);
+        // werewolf).getStrength(); <-- WON'T WORK! NEED TO DECLARE AS MonsterInstructor OR CAST AS IT!!!!!!!
+        System.out.println(werewolf);
+        saveObject(werewolf);
     }
 
-
+    // MY SOLUTION #1:
     public static void saveValues(ISaveable saveableObject){
 
         ArrayList<String> values = new ArrayList<String>();
@@ -57,7 +74,7 @@ public class Main {
         }
     }
 
-
+    // INSTRUCTOR SOLUTION #1:
     public static ArrayList<String> readValues(){
 
         ArrayList<String> values = new ArrayList<String>();
@@ -88,5 +105,18 @@ public class Main {
         }
 
         return values;
+    }
+
+    // INSTRUCTOR SOLUTION #2:
+    public static void saveObject(ISaveableInstructor objectToSave){
+        for(int i = 0; i < objectToSave.write().size(); i++){
+            System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
+        }
+    }
+
+    // INSTRUCTOR SOLUTION #3:
+    public static void loadObject(ISaveableInstructor objectToLoad){
+        ArrayList<String> values = readValues();
+        objectToLoad.read(values);
     }
 }
