@@ -20,7 +20,7 @@ public class Main {
         // and the other to populate the object's fields from an ArrayList (parameter).
         //
         // Create a few sample classes that implement your Saveable interface (we've used the idea of a game
-        // with Players and Monsters, but you can create any type of classes you want).
+        // with Player and Monster, but you can create any type of classes you want).
         //
         // Override the toString() method for each of your classes so that they can be easily printed to enable
         // the program to be tested easier.
@@ -37,20 +37,24 @@ public class Main {
         // requires, and returns an ArrayList.
         // There is a whole Java I/O section later in the course where you will get to use files, etc.
         // MY TEST CASES:
-        ISaveable player1 = new Players("Ryan", "Dagger", 90);
+        Player player1 = new Player("Ryan", "Dagger", 90);
+        Monster monster1 = new Monster("Killer Clown Guy", "Clown Car", 800);
 
-        System.out.println(player1);
+        System.out.println(player1.getName());
         saveValues(player1);
-
-        // readValues();
+        saveValues(monster1);
     }
 
 
     public static void saveValues(ISaveable saveableObject){
 
         ArrayList<String> values = new ArrayList<String>();
-
         saveableObject.valuesToBeSaved();
+        values = readValues();
+
+        for(int i = 0; i < values.size(); i++){
+            System.out.println(values.get(i) + ": has been saved.");
+        }
     }
 
 
